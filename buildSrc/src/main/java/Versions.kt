@@ -11,11 +11,13 @@ object Versions {
     const val material = "1.6.1"
     const val jUnit = "4.13.1"
 
-    const val hilt = "2.38.1"
+    const val hilt = "2.41"
     const val retrofit = "2.9.0"
     const val coroutines = "1.6.1"
     const val okhttp = "5.0.0-alpha.2"
     const val lifecycle = "2.5.1"
     const val navigation = "2.5.1"
     const val fragment = "1.5.1"
+    const val glide = "4.9.0"
+
 }

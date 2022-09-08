@@ -44,4 +44,7 @@ object Dependencies {
 
     // Fragment
     val fragment by lazy { "androidx.fragment:fragment-ktx:${Versions.fragment}" }
+
+    // Glide
+    val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
