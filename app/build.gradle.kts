@@ -61,5 +61,6 @@ dependencies {
     api(Dependencies.hiltCompiler)
     compileOnly(Dependencies.hiltDagger)
     kapt(Dependencies.hiltDaggerCompiler)
+    api(Dependencies.fragment)
 
 }

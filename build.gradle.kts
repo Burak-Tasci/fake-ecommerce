@@ -2,11 +2,11 @@
 plugins {
     id("com.android.application") version "7.4.0-alpha10" apply false
     id("com.android.library") version "7.4.0-alpha10" apply false
-    id("org.jetbrains.kotlin.android") version "1.7.10" apply false
+    id("org.jetbrains.kotlin.android") version "1.6.20" apply false
     id("com.google.dagger.hilt.android") version "2.41" apply false
     id("androidx.navigation.safeargs.kotlin") version "2.5.1" apply false
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
-    id("org.jetbrains.kotlin.jvm") version "1.7.10" apply false
+    id("org.jetbrains.kotlin.jvm") version "1.6.20" apply false
 }
 
 subprojects {
