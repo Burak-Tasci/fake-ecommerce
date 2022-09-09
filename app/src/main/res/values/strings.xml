@@ -3,5 +3,13 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">LOGIN</string>
-    <string name="to_register">Don\'t you have an account? Click here to register.</string>
+    <string name="mail">Email</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="location">Location</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">REGISTER</string>
+    <string name="locate_me">Locate\nMe!</string>
+    <string name="to_login">Have you got an account already?\nClick here to Login.</string>
+    <string name="to_login_highlighted_text">Click here to Login.</string>
 </resources>
