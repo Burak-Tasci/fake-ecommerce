@@ -1,6 +1,7 @@
 package com.tsci.fake_ecommerce.features.login
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.dogancan.core.base.platform.BaseFragment
 import com.dogancan.core.base.platform.BaseViewModel
 import com.dogancan.core.utils.binding.viewBinding
@@ -16,6 +17,12 @@ class LoginFragment : BaseFragment() {
 
     override fun initView() {
 
+    }
+
+    override fun initListeners() = with(binding) {
+        toolbar.ivBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 
