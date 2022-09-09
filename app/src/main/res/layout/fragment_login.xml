@@ -26,10 +26,12 @@
             tools:context=".features.login.LoginFragment">
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
-                android:textSize="32sp"
+                android:textSize="@dimen/textsize_32sp"
                 app:layout_constraintBottom_toTopOf="@id/tilUserName"
                 android:layout_marginBottom="@dimen/margin_32dp"
+                app:layout_constraintTop_toTopOf="parent"
                 android:text="@string/app_name"
                 android:gravity="center"
                 android:textColor="@color/glossy_grape"
@@ -44,7 +46,7 @@
                 android:layout_marginHorizontal="@dimen/margin_16dp"
                 android:hint="@string/username"
                 app:layout_constraintBottom_toTopOf="@id/tilPassword"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -59,10 +61,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16dp"
-                android:layout_marginTop="@dimen/margin_8dp"
                 android:hint="@string/password"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilUserName"
+                app:layout_constraintBottom_toTopOf="@id/btnLogin"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -74,6 +75,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
+                android:id="@+id/btnLogin"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16dp"
                 android:layout_marginTop="@dimen/margin_32dp"
