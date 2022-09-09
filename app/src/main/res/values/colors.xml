@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="thistle">#E1BEE7</color>
+    <color name="soap">#D1C4E9</color>
+    <color name="platinum">#E5E5E5</color>
+    <color name="glossy_grape">#9F92B6</color>
+    <color name="magnolia">#FFF5FF</color>
+    <color name="congo_pink">#FF8A80</color>
+    <color name="indian_red">#C85A54</color>
+    <color name="melon">#FFBCAF</color>
+    <color name="weldon_blue">#819ca9</color>
+    <color name="japanese_indigo">#29434e</color>
 </resources>
