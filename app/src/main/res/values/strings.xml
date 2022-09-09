@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">fake-ecommerce</string>
+    <string name="app_name">FAKE\nE-COMMERCE</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="to_register">Don\'t you have an account? Click here to register.</string>
 </resources>

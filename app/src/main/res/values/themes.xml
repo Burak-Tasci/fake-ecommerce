@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Fakeecommerce" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/soap</item>
-        <item name="colorPrimaryVariant">@color/glossy_grape</item>
+        <item name="colorPrimary">@color/glossy_grape</item>
+        <item name="colorPrimaryVariant">@color/soap</item>
         <item name="colorOnPrimary">@color/magnolia</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/congo_pink</item>
