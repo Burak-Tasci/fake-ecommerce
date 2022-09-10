@@ -54,6 +54,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":ui"))
     implementation(project(":usecase"))
+    implementation(project(":entity"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)

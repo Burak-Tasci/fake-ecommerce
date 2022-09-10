@@ -41,13 +41,21 @@ dependencies {
     implementation(project(":entity"))
     implementation(project(":core"))
 
-    api(Dependencies.retrofitRetrofit)
+
+    // hilt/dependency injection
     api(Dependencies.hiltDagger)
-    api(Dependencies.gson)
-    api(Dependencies.retrofitGsonConvertor)
-    api(Dependencies.okhttpLoggingInterceptor)
-    api(Dependencies.sandwich)
+    api(Dependencies.hiltCompiler)
+    api(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltDaggerCompiler)
+    // gson
+    api(Dependencies.gson)
+    // network request
+    api(Dependencies.retrofitGsonConvertor)
+    api(Dependencies.retrofitRetrofit)
+    api(Dependencies.okhttpLoggingInterceptor)
+    // state handling
+    api(Dependencies.sandwich)
+    // coroutines core
     api(Dependencies.coroutinesCore)
 
 }

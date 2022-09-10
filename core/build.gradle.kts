@@ -4,7 +4,6 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
-    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -43,10 +42,8 @@ dependencies {
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.materialDesign)
-    testImplementation(Dependencies.junit)
-//    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-//    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 
+    api(Dependencies.sandwich)
     api(Dependencies.lifecycleViewModel)
     api(Dependencies.glide)
 
