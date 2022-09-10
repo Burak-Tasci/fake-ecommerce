@@ -19,5 +19,7 @@ object Versions {
     const val navigation = "2.5.1"
     const val fragment = "1.5.1"
     const val glide = "4.9.0"
+    const val gson = "2.8.8"
+    const val sandwich = "1.2.4"
 
 }

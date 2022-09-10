@@ -53,6 +53,7 @@ kotlin {
 dependencies {
     implementation(project(":core"))
     implementation(project(":ui"))
+    implementation(project(":usecase"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
