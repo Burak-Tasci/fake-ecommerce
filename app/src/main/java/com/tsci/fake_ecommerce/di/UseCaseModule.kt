@@ -17,6 +17,6 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class UseCaseModule {
 
     @Binds
-    abstract fun bindRegisterUseCase(impl: IRegisterUseCase): RegisterUseCase
+    abstract fun bindRegisterUseCase(impl: RegisterUseCase): IRegisterUseCase
 
 }
