@@ -7,7 +7,12 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.tsci.fake_ecommerce.features.login.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="LoginFragment" >
+        <argument
+            android:defaultValue=""
+            android:name="username"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.tsci.fake_ecommerce.features.register.RegisterFragment"
