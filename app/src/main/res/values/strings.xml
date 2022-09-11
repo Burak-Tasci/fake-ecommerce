@@ -12,4 +12,6 @@
     <string name="locate_me">Locate\nMe!</string>
     <string name="to_login">Have you got an account already?\nClick here to Login.</string>
     <string name="to_login_highlighted_text">Click here to Login.</string>
+    <string name="settings">SETTINGS</string>
+    <string name="location_permission">Give Location Permission</string>
 </resources>
