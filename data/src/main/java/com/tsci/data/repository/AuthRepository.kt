@@ -3,6 +3,7 @@ package com.tsci.data.repository
 import com.dogancan.core.base.network.BaseRepository
 import com.tsci.data.di.IoDispatcher
 import com.tsci.data.remote.AuthService
+import com.tsci.entity.auth.LoginRequestModel
 import com.tsci.entity.auth.RegisterRequestModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flowOn
@@ -18,5 +19,9 @@ class AuthRepository @Inject constructor(
 
     suspend fun register(requestModel: RegisterRequestModel) = invoke {
         authService.register(requestModel)
+    }.flowOn(ioScope)
+
+    suspend fun login(requestModel: LoginRequestModel) = invoke {
+        authService.login(requestModel)
     }.flowOn(ioScope)
 }
