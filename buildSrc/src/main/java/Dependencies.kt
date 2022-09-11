@@ -55,4 +55,11 @@ object Dependencies {
 
     // Sandwich
     val sandwich by lazy { "com.github.skydoves:sandwich:${Versions.sandwich}" }
+
+    // Play Services Location
+    val playServicesLocation by lazy { "com.google.android.gms:play-services-location:${Versions.playServicesLocation}" }
+
+    // Dexter, permission manager
+    val dexter by lazy { "com.karumi:dexter:${Versions.dexter}" }
+
 }

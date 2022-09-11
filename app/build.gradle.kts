@@ -63,10 +63,12 @@ dependencies {
     api(Dependencies.hiltCompiler)
     compileOnly(Dependencies.hiltDagger)
     kapt(Dependencies.hiltDaggerCompiler)
-
     api(Dependencies.fragment)
     
     api(Dependencies.navigationFragment)
     api(Dependencies.navigationUI)
 
+    api(Dependencies.playServicesLocation)
+
+    api(Dependencies.dexter)
 }
