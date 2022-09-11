@@ -2,7 +2,9 @@ package com.tsci.fake_ecommerce.di
 
 
 import com.tsci.usecase.register.IRegisterUseCase
+import com.tsci.usecase.register.IRegisterValidationUseCase
 import com.tsci.usecase.register.RegisterUseCase
+import com.tsci.usecase.register.RegisterValidationUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,5 +20,7 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun bindRegisterUseCase(impl: RegisterUseCase): IRegisterUseCase
+    @Binds
+    abstract fun bindRegisterValidationUseCase(impl: RegisterValidationUseCase): IRegisterValidationUseCase
 
 }
