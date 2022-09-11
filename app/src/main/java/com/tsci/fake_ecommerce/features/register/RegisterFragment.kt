@@ -35,7 +35,13 @@ class RegisterFragment : BaseFragment() {
             when (uiState) {
                 is RegisterViewModel.UiState.Success -> {
                     viewModel.setLoadingState(false)
-                    toast(uiState.data.toString())
+                    viewModel.clearUiState()
+                    toast("Success")
+                    val action = RegisterFragmentDirections.toLoginFragment()
+                    action.username = uiState.data.username
+                    findNavController().navigate(
+                        action
+                    )
                 }
                 is RegisterViewModel.UiState.Loading -> {
                     viewModel.setLoadingState(true)
@@ -55,12 +61,12 @@ class RegisterFragment : BaseFragment() {
         }
     }
 
-    override fun initListeners()  {
+    override fun initListeners() {
         binding.btnLocate.setOnClickListener {
             locateUser()
         }
         binding.btnRegister.setOnClickListener {
-            if (viewModel.isRegistrationValid()){
+            if (viewModel.isRegistrationValid()) {
                 viewModel.register()
             } else {
                 toast("Invalid registration.")

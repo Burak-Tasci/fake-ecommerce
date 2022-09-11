@@ -134,6 +134,12 @@ class RegisterViewModel @Inject constructor(
         })
     }
 
+    fun clearUiState() {
+        _uiState.update {
+            UiState.Empty
+        }
+    }
+
     sealed interface UiState {
         data class Success(val data: RegisterUiModel) : UiState
         object Loading : UiState
