@@ -1,12 +1,17 @@
 package com.tsci.ui.model.auth
 
-import com.tsci.entity.auth.Name
 
 data class RegisterUiModel(
-    val address: String,
+    val city: String,
     val email: String,
-    val name: Name,
+    val lat: String,
+    val long: String,
+    val name: String,
+    val number: Int,
     val password: String,
     val phoneNumber: String,
-    val username: String
+    val street: String,
+    val surname: String,
+    val username: String,
+    val zipcode: String,
 )

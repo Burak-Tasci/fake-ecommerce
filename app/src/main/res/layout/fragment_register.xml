@@ -9,6 +9,7 @@
             type="com.tsci.fake_ecommerce.features.register.RegisterViewModel" />
     </data>
 
+    <!-- todo change imeoptions actiondone and make it single line -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -128,8 +129,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLocation"
                 android:layout_width="match_parent"
-                android:afterTextChanged="@{(text) -> viewModel.setAddress(text)}"
-                android:inputType="textMultiLine"
+                android:focusable="false"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
