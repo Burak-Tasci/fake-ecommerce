@@ -46,5 +46,6 @@ dependencies {
     api(Dependencies.sandwich)
     api(Dependencies.lifecycleViewModel)
     api(Dependencies.glide)
-
+    api(Dependencies.navigationFragment)
+    api(Dependencies.navigationUI)
 }
