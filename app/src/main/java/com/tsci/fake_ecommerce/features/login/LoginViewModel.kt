@@ -53,6 +53,14 @@ class LoginViewModel @Inject constructor(
         }
     }
 
+    fun setUsername(username: CharSequence?) {
+        loginUiModel = loginUiModel.copy(username = username.toString())
+    }
+
+    fun setPassword(password: CharSequence?) {
+        loginUiModel = loginUiModel.copy(password = password.toString())
+    }
+
     sealed interface UiState {
         data class Success(val data: LoginUiModel) : UiState
         object Loading : UiState
