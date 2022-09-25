@@ -19,6 +19,8 @@ object Dependencies {
     // Hilt
     val hiltAndroid by lazy { "com.google.dagger:hilt-android:${Versions.hilt}" }
     val hiltCompiler by lazy { "com.google.dagger:hilt-compiler:${Versions.hilt}" }
+    val hiltDagger by lazy { "com.google.dagger:dagger:${Versions.hilt}" }
+    val hiltDaggerCompiler by lazy { "com.google.dagger:dagger-compiler:${Versions.hilt}" }
 
     // Coroutines
     val coroutinesCore by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}" }
@@ -46,5 +48,18 @@ object Dependencies {
     val fragment by lazy { "androidx.fragment:fragment-ktx:${Versions.fragment}" }
 
     // Glide
-    val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
+
+    // Gson
+    val gson by lazy { "com.google.code.gson:gson:${Versions.gson}" }
+
+    // Sandwich
+    val sandwich by lazy { "com.github.skydoves:sandwich:${Versions.sandwich}" }
+
+    // Play Services Location
+    val playServicesLocation by lazy { "com.google.android.gms:play-services-location:${Versions.playServicesLocation}" }
+
+    // Dexter, permission manager
+    val dexter by lazy { "com.karumi:dexter:${Versions.dexter}" }
+
 }
