@@ -33,11 +33,14 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
+    viewBinding.enable = true
 }
 
 dependencies {
 
     implementation(Dependencies.core)
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.materialDesign)
     implementation(project(":entity"))
     implementation(project(":core"))
 
