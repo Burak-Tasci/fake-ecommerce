@@ -27,7 +27,9 @@ class LoginFragment : BaseFragment() {
                 is LoginViewModel.UiState.Success -> {
                     viewModel.setLoadingState(false)
                     viewModel.clearUiState()
-                    toast(uiState.data.toString())
+                    findNavController().navigate(
+                        LoginFragmentDirections.toHomeGraph()
+                    )
                 }
                 is LoginViewModel.UiState.Loading -> {
                     viewModel.setLoadingState(true)
