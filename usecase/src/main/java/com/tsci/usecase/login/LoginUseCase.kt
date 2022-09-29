@@ -10,11 +10,11 @@ import javax.inject.Inject
  * Created by Burak Taşcı on 11.09.2022.
  */
 class LoginUseCase @Inject constructor(
-    private val authRepository: AuthRepository,
-    private val loginMapper : LoginMapper
+    private val repository: AuthRepository,
+    private val mapper : LoginMapper
 ): ILoginUseCase {
     override suspend fun login(loginUiModel: LoginUiModel): Flow<Result<LoginRequestModel>> {
-        val requestModel = loginMapper.map(loginUiModel)
-        return authRepository.login(requestModel)
+        val requestModel = mapper.map(loginUiModel)
+        return repository.login(requestModel)
     }
 }

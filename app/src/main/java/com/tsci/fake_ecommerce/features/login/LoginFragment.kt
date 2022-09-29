@@ -25,17 +25,12 @@ class LoginFragment : BaseFragment() {
         viewModel.uiState.collects(viewLifecycleOwner){ uiState ->
             when(uiState){
                 is LoginViewModel.UiState.Success -> {
-                    viewModel.setLoadingState(false)
                     viewModel.clearUiState()
                     findNavController().navigate(
                         LoginFragmentDirections.toHomeGraph()
                     )
                 }
-                is LoginViewModel.UiState.Loading -> {
-                    viewModel.setLoadingState(true)
-                }
                 is LoginViewModel.UiState.Error -> {
-                    viewModel.setLoadingState(false)
                     toast(uiState.error.localizedMessage)
                 }
                 is LoginViewModel.UiState.Empty -> {}
