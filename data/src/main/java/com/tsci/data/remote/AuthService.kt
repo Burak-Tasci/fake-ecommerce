@@ -11,9 +11,14 @@ import retrofit2.http.POST
  */
 interface AuthService {
 
-    @POST("users")
+    @POST(REGISTER)
     suspend fun register(@Body requestModel: RegisterRequestModel): ApiResponse<RegisterRequestModel>
 
-    @POST("auth/login")
+    @POST(LOGIN)
     suspend fun login(@Body requestModel: LoginRequestModel): ApiResponse<LoginRequestModel>
+
+    companion object{
+        private const val REGISTER = "users"
+        private const val LOGIN = "auth/login"
+    }
 }
