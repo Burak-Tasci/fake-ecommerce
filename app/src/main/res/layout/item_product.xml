@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 imageUrl="@{product.image}"
+                app:layout_constraintBottom_toTopOf="@id/tvTitle"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
@@ -35,10 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_4dp"
                 android:fontFamily="@font/teko_medium"
                 android:text="@{product.title}"
                 android:textColor="@color/japanese_indigo"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/tvCategory"
                 app:layout_constraintTop_toBottomOf="@id/ivProduct"
                 tools:text="WD 2TB Elements Portable External Hard Drive - USB 3.0" />
 
@@ -52,6 +55,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/weldon_blue"
                 android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@id/tvPrice"
                 app:layout_constraintEnd_toStartOf="@id/ratingBar"
                 app:layout_constraintStart_toStartOf="@id/tvTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
@@ -81,6 +85,7 @@
                 android:textColor="@color/black"
                 android:layout_marginStart="@dimen/margin_16dp"
                 tools:text="$23"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tvTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvCategory" />
 
