@@ -10,6 +10,7 @@ import com.tsci.fake_ecommerce.extensions.collects
 import com.tsci.fake_ecommerce.extensions.toast
 import com.tsci.fake_ecommerce.features.home.adapter.CategoriesAdapter
 import com.tsci.fake_ecommerce.features.home.adapter.ProductsAdapter
+import com.tsci.fake_ecommerce.features.home.state.CategoriesUiState
 import com.tsci.fake_ecommerce.features.home.state.ProductsUiState
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,6 +32,16 @@ class HomeFragment : BaseFragment() {
                     mProductsAdapter.submitList(result.data)
                 }
                 is ProductsUiState.Error -> {
+                    toast(result.error.localizedMessage)
+                }
+            }
+        }
+        viewModel.categoriesUiState.collects(viewLifecycleOwner){ result ->
+            when(result){
+                is CategoriesUiState.Success -> {
+                    mCategoriesAdapter.submitList(result.data)
+                }
+                is CategoriesUiState.Error -> {
                     toast(result.error.localizedMessage)
                 }
             }

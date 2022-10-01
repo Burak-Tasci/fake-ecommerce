@@ -12,8 +12,11 @@ interface ProductService {
     @GET(PRODUCTS)
     suspend fun getAllProducts(): ApiResponse<List<ProductEntityModel>>
 
+    @GET(CATEGORIES)
+    suspend fun getCategories(): ApiResponse<List<String>>
 
     companion object{
         private const val PRODUCTS = "products"
+        private const val CATEGORIES = "products/categories"
     }
 }

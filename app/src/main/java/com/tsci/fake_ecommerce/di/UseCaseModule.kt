@@ -1,6 +1,8 @@
 package com.tsci.fake_ecommerce.di
 
 
+import com.tsci.usecase.categories.GetCategoriesUseCase
+import com.tsci.usecase.categories.IGetCategoriesUseCase
 import com.tsci.usecase.login.ILoginUseCase
 import com.tsci.usecase.login.LoginUseCase
 import com.tsci.usecase.product.GetAllProductsUseCase
@@ -28,7 +30,8 @@ abstract class UseCaseModule {
     abstract fun bindRegisterValidationUseCase(impl: RegisterValidationUseCase): IRegisterValidationUseCase
     @Binds
     abstract fun bindLoginUseCase(impl: LoginUseCase): ILoginUseCase
-
     @Binds
     abstract fun bindGetAllProducts(impl: GetAllProductsUseCase): IGetAllProductsUseCase
+    @Binds
+    abstract fun bindGetCategories(impl: GetCategoriesUseCase): IGetCategoriesUseCase
 }
