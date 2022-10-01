@@ -2,6 +2,7 @@ package com.tsci.fake_ecommerce.features.login
 
 import androidx.lifecycle.viewModelScope
 import com.dogancan.core.base.platform.BaseViewModel
+import com.tsci.fake_ecommerce.features.login.state.LoginUiState
 import com.tsci.ui.model.auth.LoginUiModel
 import com.tsci.usecase.login.ILoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,8 +17,8 @@ class LoginViewModel @Inject constructor(
     private val loginUseCase: ILoginUseCase
 ) : BaseViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState>(UiState.Empty)
-    val uiState: StateFlow<UiState> = _uiState
+    private val _uiState = MutableStateFlow<LoginUiState>(LoginUiState.Empty)
+    val uiState: StateFlow<LoginUiState> = _uiState
 
     private var loginUiModel: LoginUiModel
 
@@ -29,27 +30,27 @@ class LoginViewModel @Inject constructor(
         invokeUseCase(
             loginUseCase.login(loginUiModel),
             onSuccess = {
-                updateUiState(UiState.Success(loginUiModel))
+                updateUiState(LoginUiState.Success(loginUiModel))
             },
             onError = {
-                updateUiState(UiState.Error(it))
+                updateUiState(LoginUiState.Error(it))
             }
         )
     }
 
-    private fun updateUiState(result: UiState) {
+    private fun updateUiState(result: LoginUiState) {
         _uiState.update {
             when (result) {
-                is UiState.Success -> UiState.Success(result.data)
-                is UiState.Error -> UiState.Error(result.error)
-                else -> UiState.Error(UnknownError())
+                is LoginUiState.Success -> LoginUiState.Success(result.data)
+                is LoginUiState.Error -> LoginUiState.Error(result.error)
+                else -> LoginUiState.Error(UnknownError())
             }
         }
     }
 
     fun clearUiState() {
         _uiState.update {
-            UiState.Empty
+            LoginUiState.Empty
         }
     }
 
@@ -61,12 +62,6 @@ class LoginViewModel @Inject constructor(
         loginUiModel = loginUiModel.copy(password = password.toString())
     }
 
-    sealed interface UiState {
-        data class Success(val data: LoginUiModel) : UiState
-        object Loading : UiState
-        data class Error(val error: Throwable) : UiState
-        object Empty : UiState
 
-    }
 
 }

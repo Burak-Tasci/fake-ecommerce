@@ -10,6 +10,7 @@ import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentLoginBinding
 import com.tsci.fake_ecommerce.extensions.collects
 import com.tsci.fake_ecommerce.extensions.toast
+import com.tsci.fake_ecommerce.features.login.state.LoginUiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,16 +25,16 @@ class LoginFragment : BaseFragment() {
         binding.etUserName.setText(args.username)
         viewModel.uiState.collects(viewLifecycleOwner){ uiState ->
             when(uiState){
-                is LoginViewModel.UiState.Success -> {
+                is LoginUiState.Success -> {
                     viewModel.clearUiState()
                     findNavController().navigate(
                         LoginFragmentDirections.toHomeGraph()
                     )
                 }
-                is LoginViewModel.UiState.Error -> {
-                    toast(uiState.error.localizedMessage)
+                is LoginUiState.Error -> {
+                    toast(uiState.error.message)
                 }
-                is LoginViewModel.UiState.Empty -> {}
+                is LoginUiState.Empty -> {}
             }
         }
     }

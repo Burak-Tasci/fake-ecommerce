@@ -2,7 +2,7 @@ package com.tsci.fake_ecommerce.features.home
 
 import androidx.lifecycle.viewModelScope
 import com.dogancan.core.base.platform.BaseViewModel
-import com.tsci.ui.model.product.ProductUiModel
+import com.tsci.fake_ecommerce.features.home.state.ProductsUiState
 import com.tsci.usecase.product.IGetAllProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,11 +16,15 @@ class HomeViewModel @Inject constructor(
     private val getAllProductsUseCase: IGetAllProductsUseCase
 ) : BaseViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState>(UiState.Empty)
-    val uiState: StateFlow<UiState> = _uiState
+    private val _productsUiState = MutableStateFlow<ProductsUiState>(ProductsUiState.Empty)
+    val productsUiState: StateFlow<ProductsUiState> = _productsUiState
+
+    private val _categoriesUiState = MutableStateFlow<ProductsUiState>(ProductsUiState.Empty)
+    val categoriesUiState: StateFlow<ProductsUiState> = _categoriesUiState
 
     init {
         getAllProducts()
+
     }
 
     fun getAllProducts() {
@@ -28,23 +32,22 @@ class HomeViewModel @Inject constructor(
             invokeUseCase(
                 getAllProductsUseCase.getAllProducts(),
                 onSuccess = { productList ->
-                    _uiState.update {
-                        UiState.Success(productList)
+                    _productsUiState.update {
+                        ProductsUiState.Success(productList)
                     }
                 },
                 onError = { throwable ->
-                    _uiState.update {
-                        UiState.Error(throwable)
+                    _productsUiState.update {
+                        ProductsUiState.Error(throwable)
                     }
                 }
             )
         }
     }
-
-    sealed interface UiState {
-        data class Success(val data: List<ProductUiModel>) : UiState
-        object Loading : UiState
-        data class Error(val error: Throwable) : UiState
-        object Empty : UiState
+    fun getCategories(){
+        viewModelScope.launch {
+            
+        }
     }
+
 }

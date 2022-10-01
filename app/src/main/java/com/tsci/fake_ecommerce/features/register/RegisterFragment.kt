@@ -9,6 +9,7 @@ import com.dogancan.core.utils.binding.viewBinding
 import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentRegisterBinding
 import com.tsci.fake_ecommerce.extensions.*
+import com.tsci.fake_ecommerce.features.register.state.RegisterUiState
 import com.tsci.fake_ecommerce.helpers.PermissionHelper
 import com.tsci.ui.extension.makeLinks
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +34,7 @@ class RegisterFragment : BaseFragment() {
 
         viewModel.uiState.collects(viewLifecycleOwner) { uiState ->
             when (uiState) {
-                is RegisterViewModel.UiState.Success -> {
+                is RegisterUiState.Success -> {
                     viewModel.setLoadingState(false)
                     viewModel.clearUiState()
                     toast("Success")
@@ -43,14 +44,14 @@ class RegisterFragment : BaseFragment() {
                         action
                     )
                 }
-                is RegisterViewModel.UiState.Loading -> {
+                is RegisterUiState.Loading -> {
                     viewModel.setLoadingState(true)
                 }
-                is RegisterViewModel.UiState.Error -> {
+                is RegisterUiState.Error -> {
                     viewModel.setLoadingState(false)
-                    toast(uiState.error.localizedMessage)
+                    toast(uiState.error.message)
                 }
-                is RegisterViewModel.UiState.Empty -> {}
+                is RegisterUiState.Empty -> {}
             }
         }
 

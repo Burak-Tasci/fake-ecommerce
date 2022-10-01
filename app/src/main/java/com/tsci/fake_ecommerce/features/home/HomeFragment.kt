@@ -8,7 +8,9 @@ import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentHomeBinding
 import com.tsci.fake_ecommerce.extensions.collects
 import com.tsci.fake_ecommerce.extensions.toast
+import com.tsci.fake_ecommerce.features.home.adapter.CategoriesAdapter
 import com.tsci.fake_ecommerce.features.home.adapter.ProductsAdapter
+import com.tsci.fake_ecommerce.features.home.state.ProductsUiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,15 +20,17 @@ class HomeFragment : BaseFragment() {
     private val binding: FragmentHomeBinding by viewBinding()
 
     private val mProductsAdapter = ProductsAdapter()
+    private val mCategoriesAdapter = CategoriesAdapter()
 
     override fun initView() {
         binding.rvProducts.adapter = mProductsAdapter
-        viewModel.uiState.collects(viewLifecycleOwner) { result ->
+        binding.toolbar.rvCategories.adapter = mCategoriesAdapter
+        viewModel.productsUiState.collects(viewLifecycleOwner) { result ->
             when (result){
-                is HomeViewModel.UiState.Success -> {
+                is ProductsUiState.Success -> {
                     mProductsAdapter.submitList(result.data)
                 }
-                is HomeViewModel.UiState.Error -> {
+                is ProductsUiState.Error -> {
                     toast(result.error.localizedMessage)
                 }
             }
