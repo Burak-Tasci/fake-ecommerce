@@ -23,6 +23,18 @@ class LoginFragment : BaseFragment() {
     override fun initView() {
         binding.viewModel = viewModel
         binding.etUserName.setText(args.username)
+    }
+
+    override fun initListeners() {
+        binding.toolbar.ivBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.btnLogin.setOnClickListener {
+            viewModel.login()
+        }
+    }
+
+    override fun initCollectors() {
         viewModel.uiState.collects(viewLifecycleOwner){ uiState ->
             when(uiState){
                 is LoginUiState.Success -> {
@@ -36,15 +48,6 @@ class LoginFragment : BaseFragment() {
                 }
                 is LoginUiState.Empty -> {}
             }
-        }
-    }
-
-    override fun initListeners() {
-        binding.toolbar.ivBack.setOnClickListener {
-            findNavController().navigateUp()
-        }
-        binding.btnLogin.setOnClickListener {
-            viewModel.login()
         }
     }
 

@@ -32,6 +32,25 @@ class RegisterFragment : BaseFragment() {
             )
         )
 
+    }
+
+    override fun initListeners() {
+        binding.btnLocate.setOnClickListener {
+            locateUser()
+        }
+        binding.btnRegister.setOnClickListener {
+            if (viewModel.isRegistrationValid()) {
+                viewModel.register()
+            } else {
+                toast("Invalid registration.")
+            }
+        }
+        binding.etLocation.setOnClickListener {
+            // todo open a dialog to handle address variables from here
+        }
+    }
+
+    override fun initCollectors() {
         viewModel.uiState.collects(viewLifecycleOwner) { uiState ->
             when (uiState) {
                 is RegisterUiState.Success -> {
@@ -54,27 +73,10 @@ class RegisterFragment : BaseFragment() {
                 is RegisterUiState.Empty -> {}
             }
         }
-
         viewModel.locationState.collects(viewLifecycleOwner) { address ->
             if (address.isNotEmpty()) {
                 binding.etLocation.setText(address)
             }
-        }
-    }
-
-    override fun initListeners() {
-        binding.btnLocate.setOnClickListener {
-            locateUser()
-        }
-        binding.btnRegister.setOnClickListener {
-            if (viewModel.isRegistrationValid()) {
-                viewModel.register()
-            } else {
-                toast("Invalid registration.")
-            }
-        }
-        binding.etLocation.setOnClickListener {
-            // todo open a dialog to handle address variables from here
         }
     }
 
