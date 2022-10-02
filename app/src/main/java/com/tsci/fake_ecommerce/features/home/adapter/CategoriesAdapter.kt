@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dogancan.core.base.adapter.BaseListAdapter
 import com.tsci.fake_ecommerce.databinding.ItemProductCategoryBinding
 import com.tsci.fake_ecommerce.features.home.viewholder.CategoryViewHolder
+import com.tsci.ui.model.category.CategoryUiModel
 
-class CategoriesAdapter : BaseListAdapter<String>(
+class CategoriesAdapter(
+    private val onCategoryClick: (position: Int) -> Unit
+) : BaseListAdapter<CategoryUiModel>(
     itemsSame = {old, new -> old == new},
     contentsSame = {old, new -> old.equals(new)},
 ){
@@ -25,7 +28,12 @@ class CategoriesAdapter : BaseListAdapter<String>(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as CategoryViewHolder).bind(getItem(position))
+        (holder as CategoryViewHolder).apply {
+            bind(getItem(position))
+            registerClickListener(onCategoryClick)
+            onCategoryClickListener(position)
+        }
+
     }
 
 }
