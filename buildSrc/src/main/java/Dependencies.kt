@@ -15,6 +15,7 @@ object Dependencies {
     val kotlin by lazy { "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}" }
     val materialDesign by lazy { "com.google.android.material:material:${Versions.material}" }
     val junit by lazy { "junit:junit:${Versions.jUnit}" }
+    val legacySupport by lazy { "androidx.legacy:legacy-support-v4:${Versions.legacySupport}" }
 
     // Hilt
     val hiltAndroid by lazy { "com.google.dagger:hilt-android:${Versions.hilt}" }
