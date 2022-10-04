@@ -1,12 +1,12 @@
-package com.tsci.fake_ecommerce.features.home.adapter
+package com.tsci.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dogancan.core.base.adapter.BaseListAdapter
-import com.tsci.fake_ecommerce.databinding.ItemProductBinding
-import com.tsci.fake_ecommerce.features.home.viewholder.ProductViewHolder
+import com.tsci.ui.databinding.ItemProductBinding
 import com.tsci.ui.model.product.ProductUiModel
+import com.tsci.ui.viewholder.ProductViewHolder
 
 /**
  * Created by Burak Taşcı on 29.09.2022.

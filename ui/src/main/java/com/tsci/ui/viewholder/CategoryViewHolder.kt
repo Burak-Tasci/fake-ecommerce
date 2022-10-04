@@ -1,7 +1,7 @@
-package com.tsci.fake_ecommerce.features.home.viewholder
+package com.tsci.ui.viewholder
 
 import com.dogancan.core.base.adapter.BaseViewHolder
-import com.tsci.fake_ecommerce.databinding.ItemProductCategoryBinding
+import com.tsci.ui.databinding.ItemProductCategoryBinding
 import com.tsci.ui.model.category.CategoryUiModel
 
 class CategoryViewHolder(binding: ItemProductCategoryBinding): BaseViewHolder<ItemProductCategoryBinding, CategoryUiModel>(binding) {

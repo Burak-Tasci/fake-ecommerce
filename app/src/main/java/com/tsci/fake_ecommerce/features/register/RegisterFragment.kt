@@ -6,13 +6,14 @@ import androidx.navigation.fragment.findNavController
 import com.dogancan.core.base.platform.BaseFragment
 import com.dogancan.core.base.platform.BaseViewModel
 import com.dogancan.core.utils.binding.viewBinding
-import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentRegisterBinding
 import com.tsci.fake_ecommerce.extensions.*
 import com.tsci.fake_ecommerce.features.register.state.RegisterUiState
 import com.tsci.fake_ecommerce.helpers.PermissionHelper
 import com.tsci.ui.extension.makeLinks
 import dagger.hilt.android.AndroidEntryPoint
+import com.tsci.fake_ecommerce.R as AppResources
+import com.tsci.ui.R as UiResources
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment() {
@@ -24,7 +25,7 @@ class RegisterFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.tvToLogin.makeLinks(
             Pair(
-                getString(R.string.to_login_highlighted_text), View.OnClickListener {
+                getString(UiResources.string.to_login_highlighted_text), View.OnClickListener {
                     findNavController().navigate(
                         RegisterFragmentDirections.toLoginFragment()
                     )
@@ -91,8 +92,8 @@ class RegisterFragment : BaseFragment() {
                     }
 
                     override fun onPermissionDenied() {
-                        requireView().snack(getString(R.string.location_permission)) {
-                            action(getString(R.string.settings)) {
+                        requireView().snack(getString(UiResources.string.location_permission)) {
+                            action(getString(UiResources.string.settings)) {
                                 openApplicationDetailSettings(requireContext())
                             }
                         }
@@ -102,6 +103,6 @@ class RegisterFragment : BaseFragment() {
         }
     }
 
-    override fun layoutRes(): Int = R.layout.fragment_register
+    override fun layoutRes(): Int = AppResources.layout.fragment_register
     override fun viewModel(): BaseViewModel = viewModel
 }
