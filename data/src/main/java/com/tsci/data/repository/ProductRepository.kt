@@ -13,7 +13,7 @@ import javax.inject.Inject
 class ProductRepository @Inject constructor(
     private val productService: ProductService,
     @IoDispatcher private val ioScope: CoroutineDispatcher
-): BaseRepository() {
+) : BaseRepository() {
 
     suspend fun getAllProducts() = invoke {
         productService.getAllProducts()
@@ -21,5 +21,9 @@ class ProductRepository @Inject constructor(
 
     suspend fun getCategories() = invoke {
         productService.getCategories()
+    }.flowOn(ioScope)
+
+    suspend fun getProductsByCategory(category: String) = invoke {
+        productService.getProductsByCategory(category)
     }.flowOn(ioScope)
 }

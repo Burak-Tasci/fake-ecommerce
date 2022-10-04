@@ -8,10 +8,10 @@ import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentHomeBinding
 import com.tsci.fake_ecommerce.extensions.collects
 import com.tsci.fake_ecommerce.extensions.toast
-import com.tsci.fake_ecommerce.features.home.adapter.CategoriesAdapter
-import com.tsci.fake_ecommerce.features.home.adapter.ProductsAdapter
 import com.tsci.fake_ecommerce.features.home.state.CategoriesUiState
 import com.tsci.fake_ecommerce.features.home.state.ProductsUiState
+import com.tsci.ui.adapter.CategoriesAdapter
+import com.tsci.ui.adapter.ProductsAdapter
 import com.tsci.ui.model.category.CategoryUiModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,8 +25,10 @@ class HomeFragment : BaseFragment() {
     private val mCategoriesAdapter = CategoriesAdapter(::onCategoryClick)
 
     override fun initView() {
-        binding.rvProducts.adapter = mProductsAdapter
+
         binding.toolbar.rvCategories.adapter = mCategoriesAdapter
+        binding.rvProducts.adapter = mProductsAdapter
+
     }
 
     override fun initCollectors() {
@@ -34,10 +36,12 @@ class HomeFragment : BaseFragment() {
             when (result) {
                 is ProductsUiState.Success -> {
                     mProductsAdapter.submitList(result.data)
+                    viewModel.clearUiState()
                 }
                 is ProductsUiState.Error -> {
                     toast(result.error.localizedMessage)
                 }
+                is ProductsUiState.Empty -> { }
             }
         }
         viewModel.categoriesUiState.collects(viewLifecycleOwner) { result ->
@@ -52,21 +56,43 @@ class HomeFragment : BaseFragment() {
                 }
             }
         }
+
     }
-    private fun onCategoryClick(position: Int){
+
+    private fun onCategoryClick(position: Int) {
         val currentList = mCategoriesAdapter.currentList.toMutableList()
+        refreshCategories(currentList, position)
+        filterProducts(currentList[position])
+    }
+
+    private fun refreshCategories(currentList: MutableList<CategoryUiModel>,position: Int){
         currentList.forEach {
-            if (it.checked){
-                if ( currentList.indexOf(it) == position) { return }
+            if (it.checked) {
+                if (currentList.indexOf(it) == position) {
+                    return
+                }
                 currentList[currentList.indexOf(it)] = it.copy(checked = false)
             }
         }
         currentList[position] = currentList[position].copy(checked = true)
         mCategoriesAdapter.submitList(currentList)
     }
+    private fun filterProducts(item: CategoryUiModel){
+        when(item.category){
+            ALL -> {
+                viewModel.getAllProducts()
+            }
+            else -> {
+                viewModel.getProductsByCategory(item.category)
+            }
+        }
+    }
+
 
     override fun layoutRes(): Int = R.layout.fragment_home
     override fun viewModel(): BaseViewModel = viewModel
 
-
+    companion object {
+        const val ALL = "All"
+    }
 }

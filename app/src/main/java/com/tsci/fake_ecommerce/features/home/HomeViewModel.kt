@@ -6,6 +6,7 @@ import com.tsci.fake_ecommerce.features.home.state.CategoriesUiState
 import com.tsci.fake_ecommerce.features.home.state.ProductsUiState
 import com.tsci.usecase.categories.IGetCategoriesUseCase
 import com.tsci.usecase.product.IGetAllProductsUseCase
+import com.tsci.usecase.product.IGetProductsByCategoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getAllProductsUseCase: IGetAllProductsUseCase,
-    private val getCategoriesUseCase: IGetCategoriesUseCase
+    private val getCategoriesUseCase: IGetCategoriesUseCase,
+    private val getProductsByCategoryUseCase: IGetProductsByCategoryUseCase
 ) : BaseViewModel() {
 
     private val _productsUiState = MutableStateFlow<ProductsUiState>(ProductsUiState.Empty)
@@ -47,7 +49,8 @@ class HomeViewModel @Inject constructor(
             )
         }
     }
-    fun getCategories(){
+
+    private fun getCategories() {
         viewModelScope.launch {
             invokeUseCase(
                 getCategoriesUseCase.getCategories(),
@@ -62,6 +65,30 @@ class HomeViewModel @Inject constructor(
                     }
                 }
             )
+        }
+    }
+
+    fun getProductsByCategory(category: String) {
+        viewModelScope.launch {
+            invokeUseCase(
+                getProductsByCategoryUseCase.getProductsByCategory(category),
+                onSuccess = { products ->
+                    _productsUiState.update {
+                        ProductsUiState.Success(products)
+                    }
+                },
+                onError = { throwable ->
+                    _productsUiState.update {
+                        ProductsUiState.Error(throwable)
+                    }
+                }
+            )
+        }
+    }
+
+    fun clearUiState() {
+        _productsUiState.update {
+            ProductsUiState.Empty
         }
     }
 

@@ -6,7 +6,9 @@ import com.tsci.usecase.categories.IGetCategoriesUseCase
 import com.tsci.usecase.login.ILoginUseCase
 import com.tsci.usecase.login.LoginUseCase
 import com.tsci.usecase.product.GetAllProductsUseCase
+import com.tsci.usecase.product.GetProductsByCategoryUseCase
 import com.tsci.usecase.product.IGetAllProductsUseCase
+import com.tsci.usecase.product.IGetProductsByCategoryUseCase
 import com.tsci.usecase.register.IRegisterUseCase
 import com.tsci.usecase.register.IRegisterValidationUseCase
 import com.tsci.usecase.register.RegisterUseCase
@@ -34,4 +36,6 @@ abstract class UseCaseModule {
     abstract fun bindGetAllProducts(impl: GetAllProductsUseCase): IGetAllProductsUseCase
     @Binds
     abstract fun bindGetCategories(impl: GetCategoriesUseCase): IGetCategoriesUseCase
+    @Binds
+    abstract fun bindGetProductsByCategory(impl: GetProductsByCategoryUseCase): IGetProductsByCategoryUseCase
 }

@@ -9,10 +9,11 @@ import javax.inject.Inject
 class GetCategoriesUseCase @Inject constructor(
     private val repository: ProductRepository,
     private val mapper: CategoryMapper
-): IGetCategoriesUseCase {
-    override suspend fun getCategories(): Flow<Result<List<CategoryUiModel>>> = repository.getCategories().map { result ->
-        result.map { categoryList ->
-            mapper.map(categoryList)
+) : IGetCategoriesUseCase {
+    override suspend fun getCategories(): Flow<Result<List<CategoryUiModel>>> =
+        repository.getCategories().map { result ->
+            result.map { categoryList ->
+                mapper.map(categoryList)
+            }
         }
-    }
 }
