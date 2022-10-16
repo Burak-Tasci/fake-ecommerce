@@ -36,7 +36,7 @@ class HomeFragment : BaseFragment() {
             when (result) {
                 is ProductsUiState.Success -> {
                     mProductsAdapter.submitList(result.data)
-                    viewModel.clearUiState()
+                    viewModel.clearProductsUiState()
                 }
                 is ProductsUiState.Error -> {
                     toast(result.error.localizedMessage)
@@ -48,8 +48,9 @@ class HomeFragment : BaseFragment() {
             when (result) {
                 is CategoriesUiState.Success -> {
                     mCategoriesAdapter.submitList(
-                        listOf(CategoryUiModel(category = "All", checked = true)) + result.data
+                        listOf(CategoryUiModel(category = CATEGORY_ALL, checked = true)) + result.data
                     )
+                    viewModel.clearCategoriesUiState()
                 }
                 is CategoriesUiState.Error -> {
                     toast(result.error.localizedMessage)
@@ -58,6 +59,8 @@ class HomeFragment : BaseFragment() {
         }
 
     }
+
+
 
     private fun onCategoryClick(position: Int) {
         val currentList = mCategoriesAdapter.currentList.toMutableList()
@@ -79,7 +82,7 @@ class HomeFragment : BaseFragment() {
     }
     private fun filterProducts(item: CategoryUiModel){
         when(item.category){
-            ALL -> {
+            CATEGORY_ALL -> {
                 viewModel.getAllProducts()
             }
             else -> {
@@ -93,6 +96,6 @@ class HomeFragment : BaseFragment() {
     override fun viewModel(): BaseViewModel = viewModel
 
     companion object {
-        const val ALL = "All"
+        const val CATEGORY_ALL = "All"
     }
 }

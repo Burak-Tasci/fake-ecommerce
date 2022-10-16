@@ -86,9 +86,15 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun clearUiState() {
+    fun clearProductsUiState() {
         _productsUiState.update {
             ProductsUiState.Empty
+        }
+    }
+
+    fun clearCategoriesUiState() {
+        _categoriesUiState.update {
+            CategoriesUiState.Empty
         }
     }
 
