@@ -6,6 +6,7 @@ import androidx.navigation.fragment.navArgs
 import com.dogancan.core.base.platform.BaseFragment
 import com.dogancan.core.base.platform.BaseViewModel
 import com.dogancan.core.utils.binding.viewBinding
+import com.tsci.fake_ecommerce.MainActivity
 import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentLoginBinding
 import com.tsci.fake_ecommerce.extensions.collects
@@ -39,9 +40,7 @@ class LoginFragment : BaseFragment() {
             when(uiState){
                 is LoginUiState.Success -> {
                     viewModel.clearUiState()
-                    findNavController().navigate(
-                        LoginFragmentDirections.toHomeGraph()
-                    )
+                   (requireActivity() as MainActivity).setNavigationGraph(R.navigation.nav_graph_main)
                 }
                 is LoginUiState.Error -> {
                     toast(uiState.error.message)

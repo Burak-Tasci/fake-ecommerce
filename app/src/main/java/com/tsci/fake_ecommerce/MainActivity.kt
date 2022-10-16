@@ -1,6 +1,7 @@
 package com.tsci.fake_ecommerce
 
 import android.os.Bundle
+import androidx.annotation.NavigationRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -14,7 +15,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var navController: NavController
+    lateinit var mNavController: NavController
+    lateinit var mNavHostFragment: NavHostFragment
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,19 +24,23 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment =
+         mNavHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
-        navController = navHostFragment.navController
+        mNavController = mNavHostFragment.navController
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment, R.id.cartFragment, R.id.profileFragment)
+            setOf(R.id.nav_graph_home, R.id.nav_graph_cart, R.id.nav_graph_profile)
         )
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            binding.bottomNavbar.isVisible = appBarConfiguration.topLevelDestinations.contains(destination.id)
+        mNavController.addOnDestinationChangedListener { controller, destination, arguments ->
+            binding.bottomNavbar.isVisible = appBarConfiguration.topLevelDestinations.contains(destination.parent?.id)
         }
-        binding.bottomNavbar.setupWithNavController(navController)
+        binding.bottomNavbar.setupWithNavController(mNavController)
 
     }
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration)
+        return mNavController.navigateUp(appBarConfiguration)
+    }
+
+    fun setNavigationGraph(@NavigationRes graph: Int){
+        mNavController.setGraph(graph)
     }
 }

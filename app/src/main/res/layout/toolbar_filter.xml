@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@android:color/transparent"
-    android:paddingVertical="@dimen/padding_8dp"
-    android:paddingHorizontal="4dp"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategories"
+    <data>
+
+    </data>
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        tools:itemCount="4"
-        tools:listitem="@layout/item_product_category"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_height="match_parent"/>
+        android:background="@android:color/transparent"
+        android:paddingVertical="@dimen/padding_8dp"
+        android:paddingHorizontal="4dp"
+        android:layout_height="wrap_content">
 
-</com.google.android.material.appbar.AppBarLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategories"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_product_category"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>
