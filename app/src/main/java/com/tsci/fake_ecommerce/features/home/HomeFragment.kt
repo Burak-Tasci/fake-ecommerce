@@ -1,5 +1,6 @@
 package com.tsci.fake_ecommerce.features.home
 
+import android.os.Parcelable
 import androidx.fragment.app.viewModels
 import com.dogancan.core.base.platform.BaseFragment
 import com.dogancan.core.base.platform.BaseViewModel
@@ -15,8 +16,11 @@ import com.tsci.ui.adapter.ProductsAdapter
 import com.tsci.ui.model.category.CategoryUiModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
+
+    private var productsRecyclerViewState: Parcelable? = null
 
     private val viewModel: HomeViewModel by viewModels()
     private val binding: FragmentHomeBinding by viewBinding()
@@ -29,6 +33,15 @@ class HomeFragment : BaseFragment() {
         binding.toolbar.rvCategories.adapter = mCategoriesAdapter
         binding.rvProducts.adapter = mProductsAdapter
 
+    }
+    override fun onPause() {
+        super.onPause()
+        productsRecyclerViewState = binding.rvProducts.layoutManager?.onSaveInstanceState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.rvProducts.layoutManager?.onRestoreInstanceState(productsRecyclerViewState)
     }
 
     override fun initCollectors() {
