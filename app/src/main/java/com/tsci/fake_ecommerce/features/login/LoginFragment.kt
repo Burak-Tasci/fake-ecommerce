@@ -6,10 +6,12 @@ import androidx.navigation.fragment.navArgs
 import com.dogancan.core.base.platform.BaseFragment
 import com.dogancan.core.base.platform.BaseViewModel
 import com.dogancan.core.utils.binding.viewBinding
+import com.tsci.fake_ecommerce.MainActivity
 import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentLoginBinding
 import com.tsci.fake_ecommerce.extensions.collects
 import com.tsci.fake_ecommerce.extensions.toast
+import com.tsci.fake_ecommerce.features.login.state.LoginUiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,23 +24,6 @@ class LoginFragment : BaseFragment() {
     override fun initView() {
         binding.viewModel = viewModel
         binding.etUserName.setText(args.username)
-        viewModel.uiState.collects(viewLifecycleOwner){ uiState ->
-            when(uiState){
-                is LoginViewModel.UiState.Success -> {
-                    viewModel.setLoadingState(false)
-                    viewModel.clearUiState()
-                    toast(uiState.data.toString())
-                }
-                is LoginViewModel.UiState.Loading -> {
-                    viewModel.setLoadingState(true)
-                }
-                is LoginViewModel.UiState.Error -> {
-                    viewModel.setLoadingState(false)
-                    toast(uiState.error.localizedMessage)
-                }
-                is LoginViewModel.UiState.Empty -> {}
-            }
-        }
     }
 
     override fun initListeners() {
@@ -47,6 +32,21 @@ class LoginFragment : BaseFragment() {
         }
         binding.btnLogin.setOnClickListener {
             viewModel.login()
+        }
+    }
+
+    override fun initCollectors() {
+        viewModel.uiState.collects(viewLifecycleOwner){ uiState ->
+            when(uiState){
+                is LoginUiState.Success -> {
+                    viewModel.clearUiState()
+                   (requireActivity() as MainActivity).setNavigationGraph(R.navigation.nav_graph_main)
+                }
+                is LoginUiState.Error -> {
+                    toast(uiState.error.message)
+                }
+                is LoginUiState.Empty -> {}
+            }
         }
     }
 

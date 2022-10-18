@@ -4,6 +4,7 @@ import android.location.Location
 import androidx.lifecycle.viewModelScope
 import com.dogancan.core.base.platform.BaseViewModel
 import com.dogancan.core.exception.LocationNotFoundException
+import com.tsci.fake_ecommerce.features.register.state.RegisterUiState
 import com.tsci.fake_ecommerce.helpers.LocationHelper
 import com.tsci.ui.model.auth.RegisterUiModel
 import com.tsci.usecase.register.IRegisterUseCase
@@ -22,8 +23,8 @@ class RegisterViewModel @Inject constructor(
     private val locationUtils: LocationHelper
 ) : BaseViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState>(UiState.Empty)
-    val uiState: StateFlow<UiState> = _uiState
+    private val _uiState = MutableStateFlow<RegisterUiState>(RegisterUiState.Empty)
+    val uiState: StateFlow<RegisterUiState> = _uiState
 
     private var registerUiModel: RegisterUiModel
 
@@ -54,22 +55,22 @@ class RegisterViewModel @Inject constructor(
         invokeUseCase(
             registerUseCase.register(registerUiModel),
             onSuccess = {
-                updateUiState(UiState.Success(registerUiModel))
+                updateUiState(RegisterUiState.Success(registerUiModel))
             },
             onError = { result ->
-                updateUiState(UiState.Error(result))
+                updateUiState(RegisterUiState.Error(result))
             }
         )
     }
 
     fun isRegistrationValid(): Boolean = registerValidationUseCase.validate(registerUiModel)
 
-    private fun updateUiState(result: UiState) {
+    private fun updateUiState(result: RegisterUiState) {
         _uiState.update {
             when (result) {
-                is UiState.Success -> UiState.Success(result.data)
-                is UiState.Error -> UiState.Error(result.error)
-                else -> UiState.Error(UnknownError())
+                is RegisterUiState.Success -> RegisterUiState.Success(result.data)
+                is RegisterUiState.Error -> RegisterUiState.Error(result.error)
+                else -> RegisterUiState.Error(UnknownError())
             }
         }
     }
@@ -128,7 +129,7 @@ class RegisterViewModel @Inject constructor(
 
             override fun onLocationNotFound() {
                 updateUiState(
-                    UiState.Error(LocationNotFoundException())
+                    RegisterUiState.Error(LocationNotFoundException())
                 )
             }
         })
@@ -136,15 +137,9 @@ class RegisterViewModel @Inject constructor(
 
     fun clearUiState() {
         _uiState.update {
-            UiState.Empty
+            RegisterUiState.Empty
         }
     }
 
-    sealed interface UiState {
-        data class Success(val data: RegisterUiModel) : UiState
-        object Loading : UiState
-        data class Error(val error: Throwable) : UiState
-        object Empty : UiState
 
-    }
 }

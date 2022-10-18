@@ -33,6 +33,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     dataBinding.isEnabled = true
+    viewBinding.isEnabled = true
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
@@ -58,9 +59,12 @@ dependencies {
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.materialDesign)
+    implementation(Dependencies.legacySupport)
 
     api(Dependencies.hiltAndroid)
     api(Dependencies.hiltCompiler)
+    api(Dependencies.lifecycleViewModel)
+    api(Dependencies.lifecycleLiveData)
     compileOnly(Dependencies.hiltDagger)
     kapt(Dependencies.hiltDaggerCompiler)
     api(Dependencies.fragment)

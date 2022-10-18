@@ -34,6 +34,7 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
     viewBinding.enable = true
+    dataBinding.enable = true
 }
 
 dependencies {

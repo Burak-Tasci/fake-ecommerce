@@ -10,6 +10,7 @@ object Versions {
     const val appCompat = "1.4.2"
     const val material = "1.6.1"
     const val jUnit = "4.13.1"
+    const val legacySupport = "1.0.0"
 
     const val hilt = "2.41"
     const val retrofit = "2.9.0"
