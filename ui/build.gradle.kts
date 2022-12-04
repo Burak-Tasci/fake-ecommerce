@@ -42,7 +42,6 @@ dependencies {
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.materialDesign)
-    implementation(project(":entity"))
     implementation(project(":core"))
 
 }
