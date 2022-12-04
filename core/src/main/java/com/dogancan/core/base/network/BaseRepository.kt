@@ -16,7 +16,7 @@ abstract class BaseRepository {
         response.suspendOnSuccess {
             emit(Result.success(this.data))
         }.suspendOnError {
-            val message = statusCode.code.toString().plus(message())
+            val message = this.errorBody?.string() ?: this.message()
             emit(Result.failure(Throwable(message)))
         }.suspendOnException {
             emit(Result.failure(Throwable(message)))
