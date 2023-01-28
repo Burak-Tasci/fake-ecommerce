@@ -1,9 +1,9 @@
 package com.tsci.fake_ecommerce.features.profile
 
 import androidx.fragment.app.viewModels
-import com.dogancan.core.base.platform.BaseFragment
-import com.dogancan.core.base.platform.BaseViewModel
-import com.dogancan.core.utils.binding.viewBinding
+import com.tsci.core.base.platform.BaseFragment
+import com.tsci.core.base.platform.BaseViewModel
+import com.tsci.core.utils.binding.viewBinding
 import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.dogancan.core.base.network
+package com.tsci.core.base.network
 
 import com.skydoves.sandwich.*
 import kotlinx.coroutines.flow.Flow

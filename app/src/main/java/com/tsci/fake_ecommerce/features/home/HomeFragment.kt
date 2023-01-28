@@ -2,9 +2,10 @@ package com.tsci.fake_ecommerce.features.home
 
 import android.os.Parcelable
 import androidx.fragment.app.viewModels
-import com.dogancan.core.base.platform.BaseFragment
-import com.dogancan.core.base.platform.BaseViewModel
-import com.dogancan.core.utils.binding.viewBinding
+import androidx.navigation.fragment.findNavController
+import com.tsci.core.base.platform.BaseFragment
+import com.tsci.core.base.platform.BaseViewModel
+import com.tsci.core.utils.binding.viewBinding
 import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentHomeBinding
 import com.tsci.fake_ecommerce.extensions.collects
@@ -25,7 +26,7 @@ class HomeFragment : BaseFragment() {
     private val viewModel: HomeViewModel by viewModels()
     private val binding: FragmentHomeBinding by viewBinding()
 
-    private val mProductsAdapter = ProductsAdapter()
+    private val mProductsAdapter = ProductsAdapter(::onProductClick)
     private val mCategoriesAdapter = CategoriesAdapter(::onCategoryClick)
 
     override fun initView() {
@@ -79,6 +80,11 @@ class HomeFragment : BaseFragment() {
         val currentList = mCategoriesAdapter.currentList.toMutableList()
         refreshCategories(currentList, position)
         filterProducts(currentList[position])
+    }
+    private fun onProductClick(id: Int){
+        findNavController().navigate(
+            HomeFragmentDirections.toProductDetailFragment(id)
+        )
     }
 
     private fun refreshCategories(currentList: MutableList<CategoryUiModel>,position: Int){

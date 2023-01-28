@@ -1,4 +1,4 @@
-package com.dogancan.core.utils.binding
+package com.tsci.core.utils.binding
 
 import android.view.LayoutInflater
 import androidx.viewbinding.ViewBinding

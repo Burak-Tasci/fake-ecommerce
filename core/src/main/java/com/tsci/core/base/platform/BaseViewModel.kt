@@ -1,4 +1,4 @@
-package com.dogancan.core.base.platform
+package com.tsci.core.base.platform
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

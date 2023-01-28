@@ -1,4 +1,4 @@
-package com.dogancan.core.base.adapter
+package com.tsci.core.base.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

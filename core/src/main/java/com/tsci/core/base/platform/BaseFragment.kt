@@ -1,4 +1,4 @@
-package com.dogancan.core.base.platform
+package com.tsci.core.base.platform
 
 import android.app.Dialog
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.dogancan.core.extensions.progressDialog
+import com.tsci.core.extensions.progressDialog
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

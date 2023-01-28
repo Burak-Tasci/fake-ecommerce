@@ -1,4 +1,4 @@
-package com.dogancan.core.utils
+package com.tsci.core.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

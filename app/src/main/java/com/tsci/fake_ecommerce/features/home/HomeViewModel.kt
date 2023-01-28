@@ -1,7 +1,7 @@
 package com.tsci.fake_ecommerce.features.home
 
 import androidx.lifecycle.viewModelScope
-import com.dogancan.core.base.platform.BaseViewModel
+import com.tsci.core.base.platform.BaseViewModel
 import com.tsci.fake_ecommerce.features.home.state.CategoriesUiState
 import com.tsci.fake_ecommerce.features.home.state.ProductsUiState
 import com.tsci.usecase.categories.IGetCategoriesUseCase

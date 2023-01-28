@@ -1,4 +1,4 @@
-package com.dogancan.core.exception
+package com.tsci.core.exception
 
 /**
  * Created by Burak Taşcı on 11.09.2022.

@@ -3,7 +3,7 @@ package com.tsci.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dogancan.core.base.adapter.BaseListAdapter
+import com.tsci.core.base.adapter.BaseListAdapter
 import com.tsci.ui.databinding.ItemProductCategoryBinding
 import com.tsci.ui.model.category.CategoryUiModel
 import com.tsci.ui.viewholder.CategoryViewHolder

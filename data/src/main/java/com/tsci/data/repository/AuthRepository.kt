@@ -1,6 +1,6 @@
 package com.tsci.data.repository
 
-import com.dogancan.core.base.network.BaseRepository
+import com.tsci.core.base.network.BaseRepository
 import com.tsci.data.di.IoDispatcher
 import com.tsci.data.remote.AuthService
 import com.tsci.entity.auth.LoginRequestModel

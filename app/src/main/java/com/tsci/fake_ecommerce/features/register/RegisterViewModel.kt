@@ -2,8 +2,8 @@ package com.tsci.fake_ecommerce.features.register
 
 import android.location.Location
 import androidx.lifecycle.viewModelScope
-import com.dogancan.core.base.platform.BaseViewModel
-import com.dogancan.core.exception.LocationNotFoundException
+import com.tsci.core.base.platform.BaseViewModel
+import com.tsci.core.exception.LocationNotFoundException
 import com.tsci.fake_ecommerce.features.register.state.RegisterUiState
 import com.tsci.fake_ecommerce.helpers.LocationHelper
 import com.tsci.ui.model.auth.RegisterUiModel

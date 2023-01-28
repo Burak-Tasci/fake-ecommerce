@@ -1,6 +1,6 @@
 package com.tsci.data.repository
 
-import com.dogancan.core.base.network.BaseRepository
+import com.tsci.core.base.network.BaseRepository
 import javax.inject.Inject
 
 /**

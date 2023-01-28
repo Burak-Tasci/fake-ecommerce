@@ -1,4 +1,4 @@
-package com.dogancan.core.base.adapter
+package com.tsci.core.base.adapter
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView

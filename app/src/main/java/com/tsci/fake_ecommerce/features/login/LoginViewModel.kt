@@ -1,7 +1,7 @@
 package com.tsci.fake_ecommerce.features.login
 
 import androidx.lifecycle.viewModelScope
-import com.dogancan.core.base.platform.BaseViewModel
+import com.tsci.core.base.platform.BaseViewModel
 import com.tsci.fake_ecommerce.features.login.state.LoginUiState
 import com.tsci.ui.model.auth.LoginUiModel
 import com.tsci.usecase.login.ILoginUseCase

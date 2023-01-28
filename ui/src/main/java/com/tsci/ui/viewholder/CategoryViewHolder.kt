@@ -1,6 +1,6 @@
 package com.tsci.ui.viewholder
 
-import com.dogancan.core.base.adapter.BaseViewHolder
+import com.tsci.core.base.adapter.BaseViewHolder
 import com.tsci.ui.databinding.ItemProductCategoryBinding
 import com.tsci.ui.model.category.CategoryUiModel
 

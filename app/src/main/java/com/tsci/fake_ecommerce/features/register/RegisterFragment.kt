@@ -3,9 +3,9 @@ package com.tsci.fake_ecommerce.features.register
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.dogancan.core.base.platform.BaseFragment
-import com.dogancan.core.base.platform.BaseViewModel
-import com.dogancan.core.utils.binding.viewBinding
+import com.tsci.core.base.platform.BaseFragment
+import com.tsci.core.base.platform.BaseViewModel
+import com.tsci.core.utils.binding.viewBinding
 import com.tsci.fake_ecommerce.databinding.FragmentRegisterBinding
 import com.tsci.fake_ecommerce.extensions.*
 import com.tsci.fake_ecommerce.features.register.state.RegisterUiState

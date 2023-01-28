@@ -3,9 +3,9 @@ package com.tsci.fake_ecommerce.features.login
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.dogancan.core.base.platform.BaseFragment
-import com.dogancan.core.base.platform.BaseViewModel
-import com.dogancan.core.utils.binding.viewBinding
+import com.tsci.core.base.platform.BaseFragment
+import com.tsci.core.base.platform.BaseViewModel
+import com.tsci.core.utils.binding.viewBinding
 import com.tsci.fake_ecommerce.MainActivity
 import com.tsci.fake_ecommerce.R
 import com.tsci.fake_ecommerce.databinding.FragmentLoginBinding

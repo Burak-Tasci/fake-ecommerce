@@ -1,4 +1,4 @@
-package com.dogancan.core.extensions
+package com.tsci.core.extensions
 
 import android.app.Dialog
 import android.content.Context
