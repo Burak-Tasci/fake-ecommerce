@@ -10,6 +10,7 @@ object Versions {
     const val appCompat = "1.4.2"
     const val material = "1.6.1"
     const val jUnit = "4.13.1"
+    const val legacySupport = "1.0.0"
 
     const val hilt = "2.41"
     const val retrofit = "2.9.0"
@@ -19,5 +20,9 @@ object Versions {
     const val navigation = "2.5.1"
     const val fragment = "1.5.1"
     const val glide = "4.9.0"
+    const val gson = "2.8.8"
+    const val sandwich = "1.2.4"
+    const val playServicesLocation = "20.0.0"
+    const val dexter = "6.2.3"
 
 }

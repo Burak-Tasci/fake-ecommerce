@@ -27,6 +27,10 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun viewModel(): BaseViewModel
 
+    open fun initListeners() {}
+
+    open fun initCollectors() {}
+
     private lateinit var dialog: Dialog
 
     override fun onCreateView(
@@ -40,6 +44,8 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initListeners()
+        initCollectors()
         dialog = requireContext().progressDialog()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
